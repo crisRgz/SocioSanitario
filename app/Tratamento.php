@@ -1,5 +1,5 @@
 <?php namespace App;
-//---------------- N ------------------------
+//---------------- N N N ------------------------
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +21,7 @@ class Tratamento extends Model
 	// Aquí ponhemos os campos que non queremos que se devolvan nas consultas.
 	protected $hidden = ['created_at','updated_at']; 
 
-	// Relación de Tratamento con Familiar:
+	// Relación de Tratamento con Usuario:
 	public function usuario()
 	{
 		// 1 Tratamento é recibido por un Usuario.
@@ -32,8 +32,16 @@ class Tratamento extends Model
 	// Relación de Tratamento con Empregado:
 	public function empregado()
 	{
-		// 1 Tratamento cunha hora de ini e fin é realizado por un ou varios empregados.
+		// 1 Tratamento é realizado por un empregado.
 		// $this fai referencia ao obxecto que tenhamos nese momento de Empregado.
-		return $this->belongsToMany('App\Empregado');
+		return $this->belongsTo('App\Empregado');
+	}
+
+	// Relación de Tratamento con Servizos:
+	public function servizo()
+	{
+		// 1 Tratamento é ofrecido por un servizo.
+		// $this fai referencia ao obxecto que tenhamos nese momento de Servizo.
+		return $this->belongsTo('App\Servizo');
 	}
 }

@@ -34,7 +34,7 @@ class Familiar extends Model
 	// 1 rol pode ter moitos usuarios  -> belongsToMany() Relación N:M precisa de táboa pivot
 
 	// Relación de Familiar con usuario:
-	public function usuarios()
+	public function usuario()
 	{	
 		// 1 Familiar interna varios usuarios
 		// $this fai referencia ao obxecto que tenhamos nese momento de Familiar.

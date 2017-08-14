@@ -1,5 +1,5 @@
 <?php namespace App;
-//---------------- N ------------------------
+//---------------- 1 ------------------------
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,8 +36,16 @@ class Empregado extends Model
 	// Relación de Empregado con usuario:
 	public function tratamento()
 	{	
-		// 1 Empregado realiza un tratamento na mesma data e hora
+		// 1 Empregado realiza un ou varios tratamentos
 		// $this fai referencia ao obxecto que tenhamos nese momento de Empregado.
-		return $this->belongsTo('App\Usuario');
+		return $this->hasMany('App\Tratamento');
+	}
+
+	// Relación de Empregado con Empresa:
+	public function edmpresa()
+	{	
+		// 1 Empregado pode estar en 1 ou varias empresas
+		// $this fai referencia ao obxecto que tenhamos nese momento de Empregado.
+		return $this->belongsToMany('App\Empregado');
 	}
 }
