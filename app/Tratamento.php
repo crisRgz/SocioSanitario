@@ -9,17 +9,18 @@ class Tratamento extends Model
 	protected $table='tratamentos';
 
 	// Atributos que se poden asignar de xeito masivo.
-	protected $fillable = array('dataIni','dataFin','realizado');
+	protected $fillable = array('dateTimeIni','dateTimeFin','realizado','causa','idUsu','idServ','idEmpo','idEmpa');
 	/*
 	// Eloquent asume que cada tabla ten unha chave primaria con unha columna llamada id.
 	id       -> autoincremental
 	dataIni  -> data e hora de inicio do servizo
 	dataFin  -> data e hora de fin do servizo
 	recibido -> boolean => saber si o servizo foi ou non prestado, sexa vacacións/ausencia/emerxencia/etc.
+	idUsu    -> FK id usuarios
 	*/
-	
+
 	// Aquí ponhemos os campos que non queremos que se devolvan nas consultas.
-	protected $hidden = ['created_at','updated_at']; 
+	protected $hidden = ['created_at','updated_at'];
 
 	// Relación de Tratamento con Usuario:
 	public function usuario()
@@ -40,7 +41,7 @@ class Tratamento extends Model
 	// Relación de Tratamento con Servizos:
 	public function servizo()
 	{
-		// 1 Tratamento é ofrecido por un servizo.
+		// 1 Tratamento dáo un servizo.
 		// $this fai referencia ao obxecto que tenhamos nese momento de Servizo.
 		return $this->belongsTo('App\Servizo');
 	}

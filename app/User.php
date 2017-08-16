@@ -1,7 +1,5 @@
-<?php
-
-namespace App;
-
+<?php namespace App;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -14,9 +12,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password','rol'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,4 +22,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // Relación de User con Familiar:
+    public function familiar()
+    {
+        // 1 user pode definir 1 ou mais familiares
+        // $this fai referencia ao obxecto que tenhamos nese momento de user.
+        return $this->hasMany('App\Familiar');
+    }
+
+    // Relación de User con Empregado:
+    public function empregado()
+    {
+        // 1 user define a un ou máis empregados
+        // $this fai referencia ao obxecto que tenhamos nese momento de user.
+        return $this->hasMany('App\Empregado');
+    }
 }

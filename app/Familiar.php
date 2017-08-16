@@ -9,7 +9,7 @@ class Familiar extends Model
 	protected $table="familiares";
 
 	// Atributos que se poden asignar de xeito masivo.
-	protected $fillable = array('nome','apelido1','apelido2','direccion','telefono','CCC');
+	protected $fillable = array('NIF','nome','apelido1','apelido2','direccion','telefono','CCC','idUser');
 	/*
 	// Eloquent asume que cada tabla ten unha chave primaria con unha columna llamada id.
 	id -> autoincremental
@@ -22,16 +22,15 @@ class Familiar extends Model
 	*/
 	
 	// Aquí ponemos los campos que no queremos que se devuelvan en las consultas.
-	protected $hidden = ['created_at','updated_at']; 
+	protected $hidden = ['created_at','updated_at'];
 
-	// Definimos a continuación a relación desta taboa con outras.
-	// Exemplos de relacions:
-	// 1 usuario ten 1 teléfono        -> hasOne() Relación 1:1
-	// 1 teléfono pertence a 1 usuario -> belongsTo() Relación 1:1 inversa a hasOne()
-	// 1 post ten moitos comentarios   -> hasMany() Relación 1:N 
-	// 1 comentario pertence a 1 post  -> belongsTo() Relación 1:N inversa a hasMany()
-	// 1 usuario pode ter moitos rols  -> belongsToMany()
-	// 1 rol pode ter moitos usuarios  -> belongsToMany() Relación N:M precisa de táboa pivot
+	// Relación de Familiar con USER:
+	public function user()
+	{
+		// 1 Familiar é un user
+		// $this fai referencia ao obxecto que tenhamos nese momento de Familiar.
+		return $this->belongsTo('App\User');
+	}
 
 	// Relación de Familiar con usuario:
 	public function usuario()

@@ -13,8 +13,37 @@ class ServizoMigration extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('servizos', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('nome');
+            $table->string('descricion')->nullable();
+
+            // Foreign Keys
+            $table->integer('idTipo')->unsigned();
+            // Indicamos cal e a chave foránea desta taboa:
+            $table->foreign('idTipo')->references('id')->on('tipos');
+
+             // Foreign Keys
+            $table->integer('idEmpa')->unsigned();
+            // Indicamos cal e a chave foránea desta taboa:
+            $table->foreign('idEmpa')->references('id')->on('empresas');
+
+            $table->timestamps();
+        });
+
+        // táboa pivot de relaciºon N:M entre empregado e empresa.
+        Schema::create('empresa_servizo',function(Blueprint $table) {
+
+            // Programamos que si borramos unha empresa a borre tamén na taboa pivot
+            $table->integer('idEmpa')->unsigned()->index();
+            $table->foreign('idEmpa')->references('id')->on('empresas')->onDelete('cascade');
+
+            $table->integer('idServ')->unsigned()->index();
+            // Programamos que si borramos un empregado o borre tamén na taboa pivot
+            $table->foreign('idServ')->references('id')->on('servizos')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -26,6 +55,7 @@ class ServizoMigration extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('servizos');
     }
 }

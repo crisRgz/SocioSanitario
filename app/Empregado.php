@@ -9,7 +9,7 @@ class Empregado extends Model
 	protected $table="empregados";
 
 	// Atributos que se poden asignar de xeito masivo.
-	protected $fillable = array('nome','apelido1','apelido2','direccion','telefono');
+	protected $fillable = array('NIF','nome','apelido1','apelido2','direccion','telefono','idUser');
 	/*
 	// Eloquent asume que cada tabla ten unha chave primaria con unha columna llamada id.
 	id -> autoincremental
@@ -32,6 +32,14 @@ class Empregado extends Model
 	// 1 comentario pertence a 1 post  -> belongsTo() Relación 1:N inversa a hasMany()
 	// 1 usuario pode ter moitos rols  -> belongsToMany()
 	// 1 rol pode ter moitos usuarios  -> belongsToMany() Relación N:M precisa de táboa pivot
+
+	// Relación de Empregado con USER:
+	public function user()
+	{
+		// 1 Empregado é un user
+		// $this fai referencia ao obxecto que tenhamos nese momento de Empregado.
+		return $this->belongsTo('App\User');
+	}
 
 	// Relación de Empregado con usuario:
 	public function tratamento()

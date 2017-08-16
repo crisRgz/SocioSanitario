@@ -13,8 +13,23 @@ class UsuarioMigration extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id'); // id da táboa usuarios
+            $table->string('NIF');
+            $table->string('nome');
+            $table->string('apelido1');
+            $table->string('apelido2');
+            $table->string('direccion')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('nomeCont')->nullable();
+            $table->string('tlfCont')->nullable();
+            // Foreign Keys
+            $table->integer('idFam')->unsigned();
+
+            // Indicamos cal e a chave foránea desta taboa:
+            $table->foreign('idFam')->references('id')->on('familiares');
+
             $table->timestamps();
         });
     }
@@ -26,6 +41,7 @@ class UsuarioMigration extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('usuarios');
     }
 }
