@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::Routes();
+
+Route::get('/empregados', 'EmpregadoController@index')->name('empregado');

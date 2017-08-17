@@ -22,9 +22,9 @@ class EmpregadoMigration extends Migration
             $table->string('apelido2');
             $table->string('direccion');
             $table->string('telefono');
+
             // Foreign Keys
             $table->integer('idUser')->unsigned();
-
             // Indicamos cal e a chave foránea desta taboa:
             $table->foreign('idUser')->references('id')->on('users');
             $table->timestamps();

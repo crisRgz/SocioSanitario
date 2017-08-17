@@ -26,7 +26,7 @@ class FamiliarSeeder extends Seeder
 			// se está creando una nueva fila en la tabla.
 			Familiar::create(
 				[
-					'NIF'=>$faker->regexify('[0-9]{8}[^AEIOU]{1}'),
+					'NIF'=>$faker->regexify('[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}'),
 					'nome'=>$faker->firstName($gender = 'male'|'female'),
 					'apelido1'=>$faker->lastName,
 					'apelido2'=>$faker->lastName,

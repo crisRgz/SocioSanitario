@@ -9,7 +9,7 @@ class Servizo extends Model
 	protected $table="servizos";
 
 	// Atributos que se poden asignar de xeito masivo.
-	protected $fillable = array('nome','descricion','idTipo','idEmpa');
+	protected $fillable = array('nome','descricion','idTipo');
 
 	/*
 	// Eloquent asume que cada tabla ten unha chave primaria con unha columna llamada id.

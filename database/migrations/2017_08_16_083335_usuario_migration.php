@@ -24,6 +24,8 @@ class UsuarioMigration extends Migration
             $table->string('telefono')->nullable();
             $table->string('nomeCont')->nullable();
             $table->string('tlfCont')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
             // Foreign Keys
             $table->integer('idFam')->unsigned();
 

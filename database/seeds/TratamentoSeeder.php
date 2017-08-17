@@ -29,8 +29,11 @@ class TratamentoSeeder extends Seeder
 					'dateTimeIni'=>$faker->dateTime($max = 'now', $timezone = date_default_timezone_get()),
 			        'dateTimeFin'=>$faker->dateTime($max = 'now', $timezone = date_default_timezone_get()),
 			        'realizado'=>$faker->boolean($chanceOfGettingTrue = 50),
-			        'causa'=>$faker->text,
-
+			        'causa'=>$faker->realText($maxNbChars = 150, $indexSize = 2),
+        			'idUsu'=>$faker->numberBetween(1,8),
+					'idServ'=>$faker->numberBetween(1,5),
+					'idEmpo'=>$faker->numberBetween(1,5),
+					'idEmpa'=>$faker->numberBetween(1,4)
 				]
 			);
 		}

@@ -26,7 +26,7 @@ class UsuarioSeeder extends Seeder
 			// se está creando una nueva fila en la tabla.
 			Usuario::create(
 				[
-					'NIF'=>$faker->regexify('[0-9]{8}[^AEIOU]{1}'),
+					'NIF'=>$faker->regexify('[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}'),
 					'nome'=>$faker->firstName($gender = 'male'|'female'),
 					'apelido1'=>$faker->lastName,
 					'apelido2'=>$faker->lastName,
@@ -34,7 +34,9 @@ class UsuarioSeeder extends Seeder
 					'telefono'=>$faker->regexify('[7-9]{3}[0-1]{6}'),
 					'nomeCont'=>$faker->name($gender = 'male'|'female'),
 					'tlfCont'=>$faker->regexify('[7-9]{3}[0-1]{6}'),
-					'idFam'=>$faker->numberBetween(1,5)
+					'idFam'=>$faker->numberBetween(1,5),
+					'lat'=>$faker->latitude($min = 41.7, $max = 43.8),
+	            	'long'=>$faker->longitude($min = -6,7, $max = -9,3)
 				]
 			);
 		}

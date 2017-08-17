@@ -9,7 +9,7 @@ class Usuario extends Model
 	protected $table='usuarios';
 
 	// Atributos que se poden asignar de xeito masivo.
-	protected $fillable = array('NIF','nome','apelido1','apelido2','direccion','telefono','nomeCont','tlfCont','idFam');
+	protected $fillable = array('NIF','nome','apelido1','apelido2','direccion','telefono','nomeCont','tlfCont','lat','long','idFam');
 	/*
 	// Eloquent asume que cada tabla ten unha chave primaria con unha columna llamada id.
 	id -> autoincremental

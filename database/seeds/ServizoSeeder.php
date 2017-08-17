@@ -28,8 +28,7 @@ class ServizoSeeder extends Seeder
 				[
 					'nome'=>$faker->word,
 					'descricion'=>$faker->word,
-					'idTipo'=>$faker->numberBetween(1,3),
-					'idEmpa'=>$faker->numberBetween(1,4)
+					'idTipo'=>$faker->numberBetween(1,3)
 				]
 			);
 		}

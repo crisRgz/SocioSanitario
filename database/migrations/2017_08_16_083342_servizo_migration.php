@@ -25,11 +25,6 @@ class ServizoMigration extends Migration
             // Indicamos cal e a chave foránea desta taboa:
             $table->foreign('idTipo')->references('id')->on('tipos');
 
-             // Foreign Keys
-            $table->integer('idEmpa')->unsigned();
-            // Indicamos cal e a chave foránea desta taboa:
-            $table->foreign('idEmpa')->references('id')->on('empresas');
-
             $table->timestamps();
         });
 
