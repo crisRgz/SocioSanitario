@@ -38,4 +38,12 @@ class User extends Authenticatable
         // $this fai referencia ao obxecto que tenhamos nese momento de user.
         return $this->hasMany('App\Empregado');
     }
+
+     // Relación de User con Empresa:
+    public function empresa()
+    {
+        // 1 user define a un ou máis empresas
+        // $this fai referencia ao obxecto que tenhamos nese momento de user.
+        return $this->hasMany('App\Empresa');
+    }
 }

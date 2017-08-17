@@ -9,7 +9,7 @@ class Empresa extends Model
 	protected $table="empresas";
 
 	// Atributos que se poden asignar de xeito masivo.
-	protected $fillable = array('CIF','nome','nomeContacto','direccion','telefono','lat','long');
+	protected $fillable = array('CIF','nome','nomeContacto','direccion','telefono','lat','long','idUser');
 	/*
 	// Eloquent asume que cada tabla ten unha chave primaria con unha columna llamada id.
 	id -> autoincremental
@@ -23,6 +23,14 @@ class Empresa extends Model
 
 	// Aquí ponemos los campos que no queremos que se devuelvan en las consultas.
 	protected $hidden = ['created_at','updated_at'];
+
+	// Relación de Empresa con USER:
+	public function user()
+	{
+		// 1 Empresa é un user
+		// $this fai referencia ao obxecto que tenhamos nese momento de Empresa.
+		return $this->belongsTo('App\User');
+	}
 
 
 	// Relación de Empresa con servizo:
@@ -38,6 +46,6 @@ class Empresa extends Model
 	{
 		// 1 Empresa ten un ou varios empregados
 		// $this fai referencia ao obxecto que tenhamos nese momento de Empresa.
-		return $this->belongsToMany('App\Empregado')->withTimestamps();
+		return $this->belongsToMany('App\Empregado')->withTimestamps()->withPivot('idEmpo');
 	}
 }

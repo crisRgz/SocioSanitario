@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Empregado;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use View;
+use Redirect;
 
 class EmpregadoController extends Controller
 {
@@ -13,9 +18,27 @@ class EmpregadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
+
     {
-        $empregados = Empregado::all();
-        return view('empregado')->with('empregados',$empregados);
+        $empregados = DB::table('empregados')
+        ->join('empregado_empresa','empregado_empresa.idEmpo','=','empregados.id')
+        ->select('empregados.id as idEmpo','empregados.nome as nomeEmpo','empregados.apelido1 as apelido1Empo','empregados.apelido2 as apelido2Empo','empregados.NIF as NIFEmpo','empregado_empresa.idEmpa as idEmpa','empregados.idUser as idUser')
+        ->orderBy('idEmpo', 'asc')
+        ->get();
+    /* 
+    $empregados = DB::table('empregados')
+    ->join('empregado_empresa','empregado_empresa.idEmpo','=','empregados.id')
+    ->select('empregados.id as idEmpo','empregados.nome as nomeEmpo','empregados.apelido1 as apelido1Empo','empregados.apelido2 as apelido2Empo','empregados.NIF as NIFEmpo','empregado_empresa.idEmpa as idEmpa','empregados.idUser as idUser')
+    ->orderBy('idEmpo', 'asc')
+    ->get();
+    MYSQL
+    select e.id, e.nome, e.idUser, ee.idEmpa
+    from empregados as e
+    inner join empregado_empresa as ee
+    on ee.idEmpo=e.id 
+    */
+    return view('empregado')->with('empregados',$empregados);
     }
 
     /**
@@ -44,7 +67,7 @@ class EmpregadoController extends Controller
             'direccion'=> 'min:10',
             'telefono'=> 'required|min:5|numeric',
             'idUser'=> Auth::user()->id,
-        ]);
+            ]);
 
         Empregado::create($request->all());
         return redirect('/empregados');

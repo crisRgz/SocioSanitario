@@ -54,6 +54,6 @@ class Empregado extends Model
 	{
 		// 1 Empregado pode estar en 1 ou varias empresas
 		// $this fai referencia ao obxecto que tenhamos nese momento de Empregado.
-		return $this->belongsToMany('App\Empregado')->withTimestamps();
+		return $this->belongsToMany('App\Empregado')->withTimestamps()->withPivot('idEmpa');
 	}
 }

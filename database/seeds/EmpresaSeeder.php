@@ -30,7 +30,8 @@ class EmpresaSeeder extends Seeder
 	             	'direccion'=>$faker->address,
 	            	'telefono'=>$faker->regexify('[7-9]{3}[0-1]{6}'),
 	            	'lat'=>$faker->latitude($min = 41.7, $max = 43.8),
-	            	'long'=>$faker->longitude($min = -6,7, $max = -9,3)
+	            	'long'=>$faker->longitude($min = -6,7, $max = -9,3),
+	            	'idUser'=>$faker->numberBetween(11,15)
 				]
 			);
 		}

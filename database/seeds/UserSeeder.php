@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 		$faker = Faker::create();
 
 		// Creamos un bucle para cubrir 5 relacions:
-		for ($i=0; $i<10; $i++)
+		for ($i=0; $i<15; $i++)
 		{
 			// Cuando llamamos al método create del Modelo User
 			// se está creando una nueva fila en la tabla.
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
 	    			'name'=>$faker->name,
 			        'email'=>$faker->email,
 			        'password'=>$faker->md5('abc123.'),
-			        'rol'=>$faker->boolean($chanceOfGettingTrue = 50)
+			        'rol'=>$faker->randomElement($array = array ('Empregado','Familiar','Empresa'))
 			   ]
 			);
 		}

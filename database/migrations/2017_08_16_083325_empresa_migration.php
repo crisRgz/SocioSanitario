@@ -23,6 +23,10 @@ class EmpresaMigration extends Migration
             $table->string('telefono');
             $table->string('lat');
             $table->string('long');
+            // FK
+            $table->integer('idUser')->unsigned()->index();
+            // Programamos que si borramos un empregado o borre tamén na taboa pivot
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
 

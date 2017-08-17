@@ -5,12 +5,13 @@
 	<title>Todos los empregados</title>
 </head>
 <body>
+<!-- poñer lsitado máis bonito e que solo se lle mostre ao admin, ou á propia empresa dona dos empregados -->
 
 	@foreach ($empregados as $empregado)
 		<p>
-			{{ $empregado->nome }}, nif: {{ $empregado->NIF }}
+			Empregado n: {{ $empregado->idEmpo }} 
 			<br>
-			idUser: {{ $empregado->idUser }}
+			idUser: {{ $empregado->idUser }} - idEmpa: {{ $empregado->idEmpa}} - nif: {{ $empregado->NIFEmpo }} - nome: {{ $empregado->nomeEmpo }} {{ $empregado->apelido1Empo }} {{ $empregado->apelido2Empo }}
 		</p>
 	@endforeach
 </body>

@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::Routes();
 
-Route::get('/empregados', 'EmpregadoController@index')->name('empregado');
+Route::get('/lista_empregados', 'EmpregadoController@index');
+
+Route::get('/home', 'HomeController@index')->name('home');
