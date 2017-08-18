@@ -42,13 +42,30 @@ class EmpregadoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Definimos o comportamento por método post sobre a página rexistro de empregados
+     * @ param Request  Obxecto que conten o enviado por post
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        //Creamos un obxecto que conten os campos da taboa que queremos almacenar
+        $registro= new Empregado;
+
+        //Realizamos a inserion ea taboa cos datos proporcionados polo obxecto Request
+        $registro->NIF = $request['NIF'];
+        $registro->nome= $request['name'];
+        $registro->apelido1= $request['apelido1'];
+        $registro->apelido2= $request['apelido2'];
+        $registro->direccion= $request['direccion'];
+        $registro->telefono= $request['telefono'];
+        $registro->idUser= Auth::user()->id;
+
+        //Gardamos
+        $registro->save();
+
+        // Mandamos á vista
+        //return view('home')->with('id',$id=true);
+        //recargamos a vista home
+        return redirect('/home');
     }
 
     /**

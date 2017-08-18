@@ -61,15 +61,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="familiar" class="col-md-4 control-label">E ti de quen eres?</label>
+                            <label for="familiar" class="col-md-4 control-label">I'm a:</label>
+
                             <div class="col-md-2">
-                                <input type="radio" id="rol" name="rol" value="Familiar">Kas Naranxa
+                                <input type="radio" id="rol" name="rol" value="Empregado">Employee
                             </div>
                             <div class="col-md-2">
-                                <input type="radio" id="rol" name="rol" value="Empregado">Kas Limón
+                                <input type="radio" id="rol" name="rol" value="Familiar">Relative
                             </div>
                             <div class="col-md-2">
-                                <input type="radio" id="rol" name="rol" value="Empresa">Bitter Kas
+                                <input type="radio" id="rol" name="rol" value="Empresa">Company
                             </div>
                         </div>
 
